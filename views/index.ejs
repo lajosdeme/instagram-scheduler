@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+
+<body>
+    <h1>Instagram post scheduler</h1>
+    <hr>
+    <div>
+        <form action="/" method="POST" enctype="multipart/form-data">
+
+            <h2>Post info</h2>
+
+            <label for="postDate">Post date</label>
+            <input type="datetime-local" name="postDate" class="form-control" id="postDate">
+
+            <div>
+                <label for="caption">Caption</label>
+                <textarea id="caption" name="caption" value="" rows="2"
+                          placeholder="Caption" required>
+                </textarea>
+            </div>
+
+            <div>
+                <label for="firstComment">First Comment</label>
+                <textarea id="firstComment" name="firstComment" value="" rows="2"
+                          placeholder="First Comment" required>
+                </textarea>
+            </div>
+
+            <div>
+                <label for="image">Upload Image</label>
+                <input type="file" id="image"
+                       name="image" value="" required>
+            </div>
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+ 
+    <hr>
+ 
+    <h1>Uploaded Images</h1>
+    <div>
+        <% items.forEach(function(item) { %>
+        <div>
+            <div>
+                <img src="data:item.post.image/<%=item.post.image.contentType%>;base64,
+                     <%=item.post.image.data.toString('base64')%>">
+                <div>
+                    <h5><%= item.post.caption %></h5>
+ 
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</body>
+
+<%- include('partials/footer') %>
