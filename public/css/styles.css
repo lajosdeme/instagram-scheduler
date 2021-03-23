@@ -1,0 +1,21 @@
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+
+  .row-container {
+    background-color: #F8F9FA;
+    margin-top: 30px;
+  }
+
+  .main-container {
+    padding-top: 50px;
+  }
+
+  .submit-button {
+    padding-top: 20px;
+  }
+
+  .empty-paragraph {
+    text-align: center;
+    margin-top: 30px;
+  }

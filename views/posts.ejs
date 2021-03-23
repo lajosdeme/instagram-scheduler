@@ -1,0 +1,54 @@
+<%- include('partials/header') %>
+    <!-- nav bar -->
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Post scheduler</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="posts">Scheduled posts</a>
+        </li>
+    </ul>
+
+    <div class="container main-container">
+        <h1 style="text-align: center;">Scheduled posts</h1>
+        <% if (items.length==0) { %>
+            <p class="empty-paragraph">You haven't scheduled anything yet.</p>
+            <% } %>
+                <% items.forEach(function(item) { %>
+                    <div class="row row-container">
+                        <div class="col-sm-6">
+                            <img class="img-fluid img-thumbnail" src="data:item.post.image/<%=item.post.image.contentType%>;base64,
+                    <%=item.post.image.data.toString('base64')%>" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Account</h5>
+                            <p>
+                                <%= uName %>
+                            </p>
+
+                            <h5>Scheduled post date:</h5>
+                            <p>
+                                <%= item.postDate %>
+                            </p>
+
+                            <h5>Caption:</h5>
+                            <p>
+                                <%= item.post.caption %>
+                            </p>
+
+                            <% if (item.firstComment.trim().length> 0) { %>
+                                <h5>First comment:</h5>
+                                <p>
+                                    <%= item.firstComment %>
+                                </p>
+                            <% } %>
+
+                            <form action="/unschedule/<%= item._id %>" method="POST">
+                                <button class="btn btn-primary" type="submit">Unschedule</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% }) %>
+    </div>
+
+    <%- include('partials/footer') %>

@@ -1,59 +1,40 @@
 <%- include('partials/header') %>
+    <!-- nav bar -->
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Post scheduler</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="posts">Scheduled posts</a>
+        </li>
+    </ul>
 
-<body>
-    <h1>Instagram post scheduler</h1>
-    <hr>
-    <div>
+    <!-- form -->
+    <div class="container col-md-4 col-md-offset-4 main-container">
+        <h1 style="text-align: center;">Instagram post scheduler</h1>
         <form action="/" method="POST" enctype="multipart/form-data">
-
-            <h2>Post info</h2>
-
-            <label for="postDate">Post date</label>
-            <input type="datetime-local" name="postDate" class="form-control" id="postDate">
-
-            <div>
-                <label for="caption">Caption</label>
-                <textarea id="caption" name="caption" value="" rows="2"
-                          placeholder="Caption" required>
-                </textarea>
-            </div>
-
-            <div>
-                <label for="firstComment">First Comment</label>
-                <textarea id="firstComment" name="firstComment" value="" rows="2"
-                          placeholder="First Comment" required>
-                </textarea>
-            </div>
-
-            <div>
-                <label for="image">Upload Image</label>
-                <input type="file" id="image"
-                       name="image" value="" required>
-            </div>
-
-            <div>
-                <button type="submit">Submit</button>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="image">Select an image</label>
+                    <br>
+                    <input type="file" class="form-control-file" id="image" name="image" required>
+                </div>
+                <div class="form-group">
+                    <label for="caption">Caption</label>
+                    <textarea class="form-control" id="caption" rows="3" name="caption"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="firstComment">First Comment</label>
+                    <textarea class="form-control" id="firstComment" rows="3" name="firstComment"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="postDate">Post date</label>
+                    <input type="datetime-local" name="postDate" class="form-control" id="postDate" required>
+                </div>
+                <div class="form-group text-center submit-button">
+                    <button type="submit" class="btn btn-primary">Schedule</button>
+                </div>
             </div>
         </form>
     </div>
- 
-    <hr>
- 
-    <h1>Uploaded Images</h1>
-    <div>
-        <% items.forEach(function(item) { %>
-        <div>
-            <div>
-                <img src="data:item.post.image/<%=item.post.image.contentType%>;base64,
-                     <%=item.post.image.data.toString('base64')%>">
-                <div>
-                    <h5><%= item.post.caption %></h5>
- 
-                </div>
-            </div>
-        </div>
-        <% }) %>
-    </div>
-</body>
-
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>

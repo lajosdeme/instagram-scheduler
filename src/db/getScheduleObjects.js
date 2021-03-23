@@ -25,4 +25,4 @@ const getSingleScheduleObject = async (id, callback) => {
         callback(err, object)
     })
 }
-module.exports = { getScheduleObjects, getSingleScheduleObject, getObject }
+module.exports = { getScheduleObjects: getScheduleObjects, getSingleScheduleObject: getSingleScheduleObject, getObject: getObject }

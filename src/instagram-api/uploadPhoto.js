@@ -54,7 +54,7 @@ const uploadPhoto = async (id) => {
 // ------------------------- Delete object if status ok -------------------------------------- 
 function deletePostedObject(status, id) {
     if (status == 'ok') {
-        deleteObject(id, (err, deletedObj) => {
+        deleteObject(id, (err, _) => {
             if (err) {
                 console.log("error deleting object from DB after posting to IG")
             }
