@@ -8,7 +8,9 @@ const getScheduleObjects = (callback) => {
     })
 }
 
-// ------------------------- Get schedule object by id -------------------------------------- 
+/* ------------------------- Get schedule object by id -------------------------------------- 
+ * @param {Int} id   The id of the schedule info object.
+ */
 const getObject = async (id) => {
     scheduleInfo.ScheduleInfo.findById(id, (err, object) => {
         if (err) {
@@ -19,7 +21,9 @@ const getObject = async (id) => {
     })
 }
 
-// ------------------------- Get schedule object by id with callback -------------------------------------- 
+/* ------------------------- Get schedule object by id with callback -------------------------------------- 
+ * @param {Int} id   The id of the schedule info object.
+ */
 const getSingleScheduleObject = async (id, callback) => {
     scheduleInfo.ScheduleInfo.findById(id, (err, object) => {
         callback(err, object)

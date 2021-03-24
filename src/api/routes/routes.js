@@ -7,13 +7,13 @@ const Logger = require('../../loaders/logger')
 
 const router = express.Router()
 
-//TODO: Impement error handling with @hapi/boom
-
+require('dotenv').config()
 module.exports = (app) => {
     app.use('/', router)
 
     // ------------------------- Render upload page -------------------------------------- 
     router.get('/', (req, res) => {
+        console.log(process.env.IG_PROXY)
         res.render('index')
     })
     

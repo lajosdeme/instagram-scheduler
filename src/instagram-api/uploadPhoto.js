@@ -5,14 +5,13 @@ const fs = require('fs')
 const getObject = require('../db/getScheduleObjects').getSingleScheduleObject
 const addComment = require('./addComment')
 const deleteObject = require('../db/deleteScheduleObject')
+const login = require('./login')
 
-// ------------------------- Upload photo to Instagram -------------------------------------- 
-// Parameter: the id of the schedule info object you want to post to IG
+/* ------------------------- Upload photo to Instagram -------------------------------------- 
+ * @param {Int} id  The id of the schedule info object
+ */
 const uploadPhoto = async (id) => {
-    //Basic login procedure, comment out proxyUrl if you want to use proxy
-    ig.state.generateDevice(process.env.IG_USERNAME);
-    //ig.state.proxyUrl = process.env.IG_PROXY
-    await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD)
+    await login()
 
     //Get object from database
     await getObject(id, async (err, object) => {
@@ -30,7 +29,6 @@ const uploadPhoto = async (id) => {
                 caption: caption
             })
             console.log(publishResult)
-
             //If object has a first comment, add comment under new post
             if (object.firstComment != '') {
                 const mediaId = publishResult.media.pk
@@ -51,7 +49,10 @@ const uploadPhoto = async (id) => {
     })
 }
 
-// ------------------------- Delete object if status ok -------------------------------------- 
+/* ------------------------- Delete object if status ok -------------------------------------- 
+ * @param {String} status         The status of the photo upload request.
+ * @param {Int}    id             The id of the schedule info object.
+ */
 function deletePostedObject(status, id) {
     if (status == 'ok') {
         deleteObject(id, (err, _) => {

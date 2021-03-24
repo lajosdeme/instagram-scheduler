@@ -1,0 +1,35 @@
+{
+    "name": "Instagram Post Scheduler",
+    "description": "A web app to schedule and post photos to Instagram.",
+    "repository": "https://github.com/lajosdeme/instagram-scheduler",
+    "keywords": ["javascript", "nodejs", "instagram", "scheduler"],
+    "env": {
+        "NODE_ENV": {
+            "description": "Node JS environment. Can be 'development' or 'production'.",
+            "value": "development",
+            "required": true
+        },
+        "IG_USERNAME": {
+            "description": "The username your Instagram account is associated with.",
+            "required": true
+        },
+        "IG_PASSWORD": {
+            "description": "Password for your Instagram account.",
+            "required": true
+        },
+        "IG_PROXY": {
+            "description": "Add your proxy here if you want to use one (suggested, otherwise you will make Instagram angry by logging in from dynamic IP addresses). Format should be: 'http://username:pass@ip:port'. Important: It must be 'http' and not 'https' or you will receive an error. For more info: https://stackoverflow.com/a/55226647/10706839",
+            "required": false
+        },
+        "MONGODB_URI": {
+            "description": "Your MongoDB URL. If you don't have one follow the instructions here to create one, then paste it here: https://developer.mongodb.com/how-to/use-atlas-on-heroku/",
+            "required": true
+        }
+    },
+    "formation": {
+        "web": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
