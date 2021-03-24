@@ -77,4 +77,11 @@ module.exports = (app) => {
             })
         }
     })
+
+    /* ------------------------- Unschedule post -------------------------------------- 
+     * Ping app. Used to keep app alive on Heroku. Check Readme for more info.
+     */
+    router.get('/ping', (req,res) => {
+        res.send('pong')
+    })
 }
