@@ -1,7 +1,7 @@
 const express = require('express')
 const getScheduleObjects = require('../../db/getScheduleObjects').getScheduleObjects
 const createScheduleObject = require('../../db/createScheduleObject')
-const { scheduleToPost, unschedulePost } = require('../../scheduler/scheduler')
+const { scheduleToPost, unschedulePost, rescheduleAllJobs } = require('../../scheduler/scheduler')
 const upload = require('../../loaders/multer')
 const Logger = require('../../loaders/logger')
 
@@ -13,8 +13,8 @@ module.exports = (app) => {
 
     // ------------------------- Render upload page -------------------------------------- 
     router.get('/', (req, res) => {
-        console.log(process.env.IG_PROXY)
         res.render('index')
+        rescheduleAllJobs()
     })
     
     // ------------------------- Render scheduled posts --------------------------------------
@@ -83,5 +83,6 @@ module.exports = (app) => {
      */
     router.get('/ping', (req,res) => {
         res.send('pong')
+        rescheduleAllJobs()
     })
 }
