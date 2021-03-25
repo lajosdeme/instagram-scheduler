@@ -24,6 +24,10 @@
         "MONGODB_URI": {
             "description": "Your MongoDB URL. If you don't have one follow the instructions here to create one, then paste it here: https://developer.mongodb.com/how-to/use-atlas-on-heroku/",
             "required": true
+        },
+        "TZ": {
+            "description": "By default your server uses UTC time. If you want to use some other time, set it here. It must adhere to the tz database timezone format. For more info: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones",
+            "required": false
         }
     },
     "formation": {
