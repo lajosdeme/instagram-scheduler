@@ -11,8 +11,15 @@ const login = require('./login')
  * @param {Int} id  The id of the schedule info object
  */
 const uploadPhoto = async (id) => {
-    await login()
+    // await login()
 
+    await ig.state.generateDevice(process.env.IG_USERNAME);
+    const proxy = process.env.IG_PROXY
+    if (proxy !== undefined) {
+      ig.state.proxyUrl = process.env.IG_PROXY;
+    }
+    await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD)
+    
     //Get object from database
     await getObject(id, async (err, object) => {
         if (err) {

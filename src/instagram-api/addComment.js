@@ -8,7 +8,15 @@ const login = require('./login')
  * @param {String} comment   The comment to be posted.
  */
 const addComment = async (mediaId, comment) => {
-    await login()
+    // await login()
+
+    await ig.state.generateDevice(process.env.IG_USERNAME);
+    const proxy = process.env.IG_PROXY
+    if (proxy !== undefined) {
+      ig.state.proxyUrl = process.env.IG_PROXY;
+    }
+    await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD)
+    
     //Check if the comment offensive. Required before posting comment to IG.
     await ig.media.checkOffensiveComment(comment).then(() => {
         console.log('checked')
