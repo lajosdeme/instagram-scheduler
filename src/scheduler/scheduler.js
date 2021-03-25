@@ -13,7 +13,6 @@ const scheduleInstagramUpload = (scheduleObj) => {
     scheduler.scheduleJob(id.toString(), date, () => {
         uploadPhoto(id)
     })
-    console.log(scheduler.scheduledJobs)
 }
 
  /* ------------------------- Unschedule IG photo upload --------------------------------------
