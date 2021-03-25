@@ -9,7 +9,8 @@ const moment = require('moment')
 //Creates a Schedule Info object and saves it to the database
 const createScheduleObject = (req, callback) => {
     const datetimeLocal = req.body.postDate
-    const datetimeUTC = new Date(datetimeLocal).toISOString()
+    const datetimeUTC = new Date(datetimeLocal)
+    console.log(datetimeUTC)
     
     const img = new image.Image({
         data: fs.readFileSync(req.file.path),
