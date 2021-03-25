@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+    <div class="container col-lg-3 col-lg-offset-4 login-container">
+        <h1 style="text-align: center;">Login</h1>
+        <form name="login-form" action="/login" method="POST">
+            <div class="form-row justify-content-center">
+                <input class="form-control login-input" type="text" id="username" name="username"
+                    placeholder="Instagram username">
+                <input class="form-control login-input" type="password" id="password" name="password"
+                    placeholder="Password">
+
+                <div class="form-group text-center submit-button">
+                    <button type="submit" class="btn btn-outline-primary login-button">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <%- include('partials/footer') %>

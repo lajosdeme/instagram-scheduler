@@ -13,6 +13,7 @@ const scheduleInstagramUpload = (scheduleObj) => {
     scheduler.scheduleJob(id.toString(), date, () => {
         uploadPhoto(id)
     })
+    console.log(scheduler.scheduledJobs)
 }
 
  /* ------------------------- Unschedule IG photo upload --------------------------------------
@@ -29,14 +30,15 @@ const unscheduleInstagramUpload = (id, callback) => {
     }
 }
 
-/* The basic idea behind this is that free Heroku apps need to sleep at least 7 hours/day. 
+/* ---------------------------- Reschedule all posts ----------------------------------------
+ * The basic idea behind this is that free Heroku apps need to sleep at least 7 hours/day. 
  * That means when your server restarts scheduled jobs will be lost. 
  * We reschedule the posting of every object we have in our database upon server restart.
  * Since objects are deleted from DB right after they're posted, we can be certain that only scheduled posts will be in DB, so it's safe to reschedule all.
-*/
+ */
 const rescheduleAllJobs = () => {
-    const jobs = scheduler.scheduledJobs
-    if (jobs.length > 0) {
+    const jobsCount = Object.keys(scheduler.scheduledJobs).length
+    if (jobsCount > 0) {
         return
     } else {
         getScheduleObjects((err, items) => {

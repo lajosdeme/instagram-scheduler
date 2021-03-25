@@ -19,3 +19,16 @@
     text-align: center;
     margin-top: 30px;
   }
+
+  .login-container {
+    margin-top: 80px;
+  }
+
+  .login-input {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .login-button {
+    width: 200px;
+  }
