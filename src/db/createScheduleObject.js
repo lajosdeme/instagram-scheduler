@@ -20,8 +20,7 @@ const createScheduleObject = (req, callback) => {
     const scheduleObj = new scheduleInfo.ScheduleInfo({
         postDate: req.body.postDate,
         post: igPost,
-        firstComment: req.body.firstComment,
-        imgPath: req.file.path
+        firstComment: req.body.firstComment
     })
 
     scheduleObj.save()

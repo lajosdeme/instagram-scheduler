@@ -5,8 +5,7 @@ const post = require('./post')
 const scheduleInfoSchema = new mongoose.Schema({
     postDate: Date,
     post: post.postSchema,
-    firstComment: String,
-    imgPath: String
+    firstComment: String
 })
 const ScheduleInfo = new mongoose.model('ScheduleInfo', scheduleInfoSchema)
 
