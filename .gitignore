@@ -116,5 +116,5 @@ dist
 .pnp.*
 
 #VSCode & DSStore config
-.vscode
-.DS_Store
+**/.vscode
+**/.DS_Store
