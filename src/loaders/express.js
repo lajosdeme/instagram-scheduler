@@ -3,7 +3,7 @@ const passport = require('passport')
 const routes = require('../api/index')
 const path = require('path')
 const session = require('express-session')
-// const bodyParser = require('body')
+require('dotenv').config()
 
 module.exports = async ({ app }) => {
   app.use(express.static(path.join(__dirname, '../../public')))
@@ -11,7 +11,7 @@ module.exports = async ({ app }) => {
 
   app.use(express.json())
   app.use(require('body-parser').urlencoded({ extended: true }))  
-  app.use(session({ secret: 'WPNMQLf17fzdLiog2lpbj220DXewmy9r'}));
+  app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true}));
   app.use(passport.initialize())
   app.use(passport.session())
 

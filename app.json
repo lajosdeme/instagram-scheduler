@@ -28,6 +28,10 @@
         "TZ": {
             "description": "By default your server uses UTC time. If you want to use some other time, set it here. It must adhere to the tz database timezone format. For more info: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones",
             "required": false
+        },
+        "SECRET": {
+            "description": "Express session secret. A session secret is used for encrypting cookies. Generate a strong secret and paste it here.",
+            "required": true
         }
     },
     "formation": {
