@@ -14,6 +14,7 @@ Schedule your photos to be posted automatically to Instagram at the specified ti
 Format should be: 'http://username:pass@ip:port'.  
 **Important**: It must be 'http' and not 'https' or you will receive an error. For more info [read this](https://stackoverflow.com/a/55226647/10706839).
 - ```MONGODB_URI```: The URL for your MongoDB database. If you don't have one, follow the instructions [here](https://developer.mongodb.com/how-to/use-atlas-on-heroku/).
+- ```SECRET```: Express session secret. A session secret is used for encrypting cookies. Generate a strong secret and add it. You can easily generate one in your shell. If you have openssl then simply ```openssl rand -hex 12```, or in Pyhton ```import secrets``` and then ```secrets.token_hex(16)```
 - ```TZ```: By default your server uses UTC time. If you want to use some other time zone to schedule your posts you must specify it here.  
 Your input must adhere to the [tz database timezone format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 - ```NODE_ENV```: Node JS environment. Can be 'development' or 'production'.
